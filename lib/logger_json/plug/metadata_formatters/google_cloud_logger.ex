@@ -71,7 +71,7 @@ if Code.ensure_loaded?(Plug) do
     end
 
     defp node_metadata do
-      {:ok, hostname} = :net_adm.localhoste()
+      hostname = :net_adm.localhost()
 
       vm_pid =
         case Integer.parse(System.pid()) do

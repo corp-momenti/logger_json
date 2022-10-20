@@ -363,7 +363,7 @@ defmodule LoggerJSONDatadogTest do
 
   test "logs hostname when set to :system" do
     Logger.configure_backend(LoggerJSON, formatter_opts: %{hostname: :system})
-    {:ok, hostname} = :net_adm.localhoste()
+    hostname = :net_adm.localhost()
 
     log =
       fn -> Logger.debug("hello") end

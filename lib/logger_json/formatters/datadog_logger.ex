@@ -121,7 +121,7 @@ defmodule LoggerJSON.Formatters.DatadogLogger do
   end
 
   defp syslog(level, ts, :system) do
-    {:ok, hostname} = :net_adm.localhost()
+    hostname = :net_adm.localhost()
 
     json_map(
       hostname: to_string(hostname),
