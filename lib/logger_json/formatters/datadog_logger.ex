@@ -13,7 +13,7 @@ defmodule LoggerJSON.Formatters.DatadogLogger do
 
   By setting the `hostname` value, you can change how the `syslog.hostname` is
   set in logs. In most cases, you can leave this unset and it will use default
-  to `:system`, which uses `:inet.gethostname/0` to resolve the value.
+  to `:system`, which uses `:net_adm.localhost/0` to resolve the value.
 
   If you are running in an environment where the hostname is not correct, you
   can hard code it by setting `hostname` to a string. In places where the
@@ -121,7 +121,7 @@ defmodule LoggerJSON.Formatters.DatadogLogger do
   end
 
   defp syslog(level, ts, :system) do
-    {:ok, hostname} = :inet.gethostname()
+    {:ok, hostname} = :net_adm.localhost()
 
     json_map(
       hostname: to_string(hostname),
